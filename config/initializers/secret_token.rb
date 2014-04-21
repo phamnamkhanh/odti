@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Odti::Application.config.secret_key_base = '2b044ddd5ba360c54d7c2ad9f0a1be24c41aa67ae5b8eada1146688cf40d94e650a66608052b0e982a872f0949e61928ceff67172227fa95b1e16d57e86fcdd7'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exists?(token_file)
+    #User the existing token.
+    File.read(token_file).chomp
+  else
+    #Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Odti::Application.config.secret_key_base = secure_token
