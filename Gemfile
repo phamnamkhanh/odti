@@ -4,7 +4,7 @@ ruby '2.1.1'
 gem 'rails', '4.0.4'
 # gem 'bootstrap-sass', '~> 3.1.1.1'
 # gem 'sprockets', '2.11.0'
-gem 'mapbox-rails'
+gem 'mapbox-rails', '~> 1.6.1.1'
 
 # bootswatch
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
